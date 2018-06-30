@@ -6,7 +6,7 @@ newline_tokens = [
     'UNION ALL', 'UNION'
     ]
 
-sameline_tokens = [
+same_line_tokens = [
     'LIMIT', 'LEFT OUTER JOIN', 'RIGHT OUTER JOIN', 'LEFT JOIN', 'RIGHT JOIN',
     'OUTER JOIN', 'INNER JOIN', 'JOIN', 'XOR', 'OR', 'AND'
     ]
@@ -15,8 +15,19 @@ sameline_tokens = [
 def formatter_new_line_tokens(text_to_format):
     for token in newline_tokens:
         text_to_format = re.sub(
-            token + '[\s]*',
+            token + '[\s\n\t]*',
             token + '\n',
+            text_to_format,
+            flags=re.IGNORECASE
+        )
+    return text_to_format
+
+
+def formatter_same_line_tokens(text_to_format):
+    for token in same_line_tokens:
+        text_to_format = re.sub(
+            token + '[\s]',
+            token + ' ',
             text_to_format,
             flags=re.IGNORECASE
         )
