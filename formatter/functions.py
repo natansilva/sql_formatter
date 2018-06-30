@@ -61,9 +61,10 @@ sql_functions = [
 def format_sql_functions(text_to_format):
     for function_token in sql_functions:
         text_to_format = re.sub(
-            function_token.lower() + '[\s]?\(',
+            function_token + '[\s]*\(',
             function_token + '(',
-            text_to_format
-            )
+            text_to_format,
+            flags=re.IGNORECASE,
+        )
 
     return text_to_format
