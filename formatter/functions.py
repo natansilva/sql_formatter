@@ -1,3 +1,5 @@
+import re
+
 sql_functions = [
     'ABS', 'ACOS', 'ADDDATE', 'ADDTIME', 'AES_DECRYPT', 'AES_ENCRYPT', 'AREA',
     'ASBINARY', 'ASCII', 'ASIN', 'ASTEXT', 'ATAN', 'ATAN2', 'AVG',
@@ -55,12 +57,13 @@ sql_functions = [
     'WEEKOFYEAR', 'WITHIN', 'X', 'Y', 'YEAR', 'YEARWEEK'
     ]
 
-newline_tokens = [
-    'SELECT', 'FROM', 'WHERE', 'SET', 'ORDER BY', 'GROUP BY',  'DROP',
-    'VALUES', 'UPDATE', 'HAVING', 'ADD', 'AFTER', 'ALTER TABLE', 'DELETE FROM',
-    'UNION ALL', 'UNION'
-    ]
-sameline_tokens = [
-    'LIMIT', 'LEFT OUTER JOIN', 'RIGHT OUTER JOIN', 'LEFT JOIN', 'RIGHT JOIN',
-    'OUTER JOIN', 'INNER JOIN', 'JOIN', 'XOR', 'OR', 'AND'
-    ]
+
+def format_sql_functions(text_to_format):
+    for function_token in sql_functions:
+        text_to_format = re.sub(
+            function_token.lower() + '[\s]?\(',
+            function_token + '(',
+            text_to_format
+            )
+
+    return text_to_format
