@@ -12,7 +12,7 @@ same_line_tokens = [
     ]
 
 
-def formatter_new_line_tokens(text_to_format):
+def format_new_line_tokens(text_to_format):
     for token in newline_tokens:
         text_to_format = re.sub(
             token + '[\s\n\t]*',
@@ -23,7 +23,7 @@ def formatter_new_line_tokens(text_to_format):
     return text_to_format
 
 
-def formatter_same_line_tokens(text_to_format):
+def format_same_line_tokens(text_to_format):
     for token in same_line_tokens:
         text_to_format = re.sub(
             token + '[\s]',
