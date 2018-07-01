@@ -1,4 +1,5 @@
 import formatter.formatter as fm
+import pytest
 import os
 
 dirname = os.path.dirname(__file__)
@@ -14,7 +15,8 @@ def test_format_file_simple():
     fm.write_file(filename, result_string)
 
 
-def test_format_file_simple():
+@pytest.mark.skip(reason='in development')
+def test_format_file_complex():
     filename = os.path.join(dirname, 'complex_input_string.sql')
     complex_input_string = fm.read_file(filename)
     result_string = fm.format_string(complex_input_string)
