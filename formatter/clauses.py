@@ -12,6 +12,21 @@ same_line_tokens = [
     ]
 
 
+def format_break_line_before_tokens(text_to_format):
+    for token in newline_tokens + same_line_tokens:
+        if token == 'SELECT':
+            continue
+
+        text_to_format = re.sub(
+            '[\s\n\t]*' + token,
+            '\n' + token,
+            text_to_format,
+            flags=re.IGNORECASE
+        )
+
+    return text_to_format
+
+
 def format_new_line_tokens(text_to_format):
     for token in newline_tokens:
         text_to_format = re.sub(

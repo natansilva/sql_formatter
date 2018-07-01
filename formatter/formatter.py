@@ -22,6 +22,7 @@ def write_file(path, content):
 def format_file(file_content):
     file_content = identation.remove_all_tabs(file_content)
     file_content = functions.format_sql_functions(file_content)
+    file_content = clauses.format_break_line_after_tokens(file_content)
     file_content = clauses.format_new_line_tokens(file_content)
     file_content = clauses.format_same_line_tokens(file_content)
     file_content = identation.ident_in_select_from_clause(file_content)

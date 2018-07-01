@@ -43,3 +43,11 @@ def test_format_same_line_tokens_with_tab_token():
 
 def test_format_same_line_tokens_with_break_line():
     assert cl.format_same_line_tokens('LIMIT\n') == 'LIMIT '
+
+
+def test_format_break_line_before_tokens():
+    assert cl.format_break_line_before_tokens('FROM') == '\nFROM'
+
+
+def test_format_break_line_before_tokens_select():
+    assert cl.format_break_line_before_tokens('SELECT') == 'SELECT'
