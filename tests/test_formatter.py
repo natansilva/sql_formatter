@@ -3,9 +3,9 @@ import pytest
 import os
 
 dirname = os.path.dirname(__file__)
+dirname = os.path.join(dirname, 'data_test/')
 
-
-@pytest.mark.skip(reason='in development')
+# @pytest.mark.skip(reason='in development')
 def test_format_file_simple():
     filename = os.path.join(dirname, 'simple_input_string.sql')
     simple_input_string = fm.read_file(filename)
@@ -15,7 +15,7 @@ def test_format_file_simple():
     fm.write_file(filename, result_string)
 
 
-@pytest.mark.skip(reason='in development')
+# @pytest.mark.skip(reason='in development')
 def test_format_file_complex():
     filename = os.path.join(dirname, 'complex_input_string.sql')
     complex_input_string = fm.read_file(filename)
